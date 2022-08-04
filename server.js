@@ -14,6 +14,10 @@ mongoose.connect('mongodb+srv://av:av@cluster0.fifwv.mongodb.net/?retryWrites=tr
 	useNewUrlParser: true
 })
 
+app.get('/',(req,res)=>{
+	res.send("Hello world)
+})
+
 app.post('/api/register', async (req, res) => {
 	console.log(req.body)
 	try {
@@ -78,23 +82,23 @@ app.get('/api/getusers', async (req, res) => {
 	}
 })
 
-app.post('/api/quote', async (req, res) => {
-	const token = req.headers['x-access-token']
+// app.post('/api/quote', async (req, res) => {
+// 	const token = req.headers['x-access-token']
 
-	try {
-		const decoded = jwt.verify(token, 'secret123')
-		const email = decoded.email
-		await User.updateOne(
-			{ email: email },
-			{ $set: { quote: req.body.quote } }
-		)
+// 	try {
+// 		const decoded = jwt.verify(token, 'secret123')
+// 		const email = decoded.email
+// 		await User.updateOne(
+// 			{ email: email },
+// 			{ $set: { quote: req.body.quote } }
+// 		)
 
-		return res.json({ status: 'ok' })
-	} catch (error) {
-		console.log(error)
-		res.json({ status: 'error', error: 'invalid token' })
-	}
-})
+// 		return res.json({ status: 'ok' })
+// 	} catch (error) {
+// 		console.log(error)
+// 		res.json({ status: 'error', error: 'invalid token' })
+// 	}
+// })
 
 app.listen(5000, () => {
 	console.log('Server started on 1337')
