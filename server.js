@@ -11,7 +11,8 @@ app.use(express.json())
 
 mongoose.connect('mongodb+srv://av:av@cluster0.fifwv.mongodb.net/?retryWrites=true&w=majority',{
 	useUnifiedTopology: true,
-	useNewUrlParser: true
+	useNewUrlParser: true,
+	useCreateIndex:true
 })
 
 app.get('/',(req,res)=>{
