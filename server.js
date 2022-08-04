@@ -68,7 +68,7 @@ app.post('/api/login', async (req, res) => {
 	}
 })
 
-app.get('/api/getusers', async (req, res) => {
+app.get('/api/getuser', async (req, res) => {
 	const token = req.headers['x-access-token']
 
 	try {
@@ -76,7 +76,7 @@ app.get('/api/getusers', async (req, res) => {
 		const email = decoded.email
 		const user = await User.findOne({ email: email })
         
-		return res.json({ status: 'ok', quote: user.quote })
+		return res.json({ status: 'ok', user: user })
 	} catch (error) {
 		console.log(error)
 		res.json({ status: 'error', error: 'invalid token' })
