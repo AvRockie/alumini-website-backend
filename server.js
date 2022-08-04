@@ -15,7 +15,7 @@ mongoose.connect('mongodb+srv://av:av@cluster0.fifwv.mongodb.net/?retryWrites=tr
 })
 
 app.get('/',(req,res)=>{
-	res.send("Hello world)
+	res.send("Hello world")
 })
 
 app.post('/api/register', async (req, res) => {
